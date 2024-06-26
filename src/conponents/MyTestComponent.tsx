@@ -1,7 +1,13 @@
 import useCount from "../atoms/Count";
 // import { useAtom } from "jotai";
 
-export default function MyTestComponent() {
+interface IMyTestComponentProps {
+  str?: string;
+}
+
+export default function MyTestComponent({
+  str = "Default string",
+}: IMyTestComponentProps) {
   //   const [count] = useAtom(countState);
   const [count, setCount] = useCount();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -11,6 +17,7 @@ export default function MyTestComponent() {
   return (
     <div>
       <h2 style={{ fontSize: "50px" }}>Count from main app = {count}</h2>
+      <span>Строка из пропсов {str}</span>
       <div>
         <button
           aria-label="Increment value"
